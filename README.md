@@ -14,14 +14,16 @@ Summary: Python<->ObjC Interoperability Module
 Current build status
 ====================
 
-Linux: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/pyobjc-core-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/pyobjc-core-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![OSX](https://img.shields.io/travis/conda-forge/pyobjc-core-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/pyobjc-core-feedstock)
+![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyobjc-core/badges/version.svg)](https://anaconda.org/conda-forge/pyobjc-core)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyobjc-core/badges/downloads.svg)](https://anaconda.org/conda-forge/pyobjc-core)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pyobjc--core-green.svg)](https://anaconda.org/conda-forge/pyobjc-core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyobjc-core.svg)](https://anaconda.org/conda-forge/pyobjc-core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyobjc-core.svg)](https://anaconda.org/conda-forge/pyobjc-core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyobjc-core.svg)](https://anaconda.org/conda-forge/pyobjc-core) |
 
 Installing pyobjc-core
 ======================
