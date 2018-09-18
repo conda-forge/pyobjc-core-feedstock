@@ -1,6 +1,6 @@
 {% set name = "pyobjc-core" %}
-{% set version = "4.2.2" %}
-{% set sha256 = "f76ed67ae902ea4bf6b673962520334b0ae26910c294b6ffbd2ac1af9b62ea0f" %}
+{% set version = "5.0" %}
+{% set sha256 = "b23d20deae41bb318858c318f65f6c7c399ec8eb26a9f1a97abf565501a838ea" %}
 
 package:
   name: {{ name }}
