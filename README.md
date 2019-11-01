@@ -49,6 +49,13 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pyobjc-core-feedstock?branchName=master&jobName=osx&configuration=osx_python3.7" alt="variant">
                 </a>
               </td>
+            </tr><tr>
+              <td>osx_python3.8</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=903&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pyobjc-core-feedstock?branchName=master&jobName=osx&configuration=osx_python3.8" alt="variant">
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
