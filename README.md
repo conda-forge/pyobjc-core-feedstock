@@ -5,7 +5,7 @@ Home: http://pyobjc.sourceforge.net/
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Python<->ObjC Interoperability Module
 
