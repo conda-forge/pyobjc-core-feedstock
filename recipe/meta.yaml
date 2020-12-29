@@ -1,6 +1,6 @@
 {% set name = "pyobjc-core" %}
-{% set version = "6.2.2" %}
-{% set sha256 = "38e7b15a042439dadd18b28b78229e52fb882460fc16ddbae342b9972d5a827c" %}
+{% set version = "7.1" %}
+{% set sha256 = "a0616d5d816b4471f8f782c3a9a8923d2cc85014d88ad4f7fec694be9e6ea349" %}
 
 package:
   name: {{ name }}
@@ -12,9 +12,9 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
-  skip: true  # [not osx or py2k]
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  number: 0
+  skip: true  # [not osx or py2k or python_impl == 'pypy']
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
