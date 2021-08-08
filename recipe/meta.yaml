@@ -33,11 +33,12 @@ test:
     - objc
 
 about:
-  home: http://pyobjc.sourceforge.net/
+  home: https://github.com/ronaldoussoren/pyobjc
   license: MIT
   summary: Python<->ObjC Interoperability Module
   license_family: MIT
   license_file: License.txt
+  doc_url: https://pyobjc.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:

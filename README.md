@@ -1,13 +1,15 @@
 About pyobjc-core
 =================
 
-Home: http://pyobjc.sourceforge.net/
+Home: https://github.com/ronaldoussoren/pyobjc
 
 Package license: MIT
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pyobjc-core-feedstock/blob/master/LICENSE.txt)
 
 Summary: Python<->ObjC Interoperability Module
+
+Documentation: https://pyobjc.readthedocs.io/en/latest/
 
 Current build status
 ====================
