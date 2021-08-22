@@ -12,9 +12,12 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not osx or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script:
+    # force pyobjc to use conda-forge's chosen SDK
+    - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
+    - {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
