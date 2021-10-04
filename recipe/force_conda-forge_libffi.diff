@@ -1,8 +1,8 @@
 diff --git a/pyobjc-core/setup.py b/pyobjc-core/setup.py
-index 6183ba97e..89e656fca 100644
+index 6183ba97e..d54ebbf65 100644
 --- a/pyobjc-core/setup.py
 +++ b/pyobjc-core/setup.py
-@@ -130,6 +130,24 @@ if "-O0" in get_config_var("CFLAGS"):
+@@ -130,6 +130,28 @@ if "-O0" in get_config_var("CFLAGS"):
              config_vars[k] = config_vars[k].replace("-O0", "-O1")
  
  
@@ -24,18 +24,10 @@ index 6183ba97e..89e656fca 100644
 +            print("  ...fixed:", k, ' '.join(new_flags))
 +
 +
++# overwrite LDFLAGS
++get_config_vars()["LDSHARED"] = os.environ['CC'] + ' ' + os.environ['LDFLAGS'] + ' ' + os.environ['CPPFLAGS']
++
++
  if get_config_var("Py_DEBUG"):
      # Running with Py_DEBUG, reduce optimization level
      # to make it easier to debug the code.
-@@ -550,6 +568,11 @@ class oc_build_ext(build_ext.build_ext):
-             cflags = cflags.replace("-mno-fused-madd", "")
-             get_config_vars()["CFLAGS"] = cflags
- 
-+        ldflags = get_config_var("LDFLAGS")
-+        if "-Wl,-dead_strip_dylibs" in ldflags:
-+            ldflags = ldflags.replace("-Wl,-dead_strip_dylibs", "")
-+            get_config_vars()["LDFLAGS"] = ldflags
-+
-         CFLAGS.append(
-             "-DPyObjC_BUILD_RELEASE=%02d%02d"
-             % (tuple(map(int, get_sdk_level(self.sdk_root).split("."))))
