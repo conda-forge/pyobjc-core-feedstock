@@ -10,8 +10,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - force_conda-forge_libffi.diff
+  #patches:
+  #  - force_conda-forge_libffi.diff
 
 build:
   number: 2
@@ -22,18 +22,13 @@ build:
     # "-framework Carbon" is ignored because of this linker flag set by conda, so we remove it
     - export LDFLAGS=`echo "${LDFLAGS}" | sed "s/-Wl,-dead_strip_dylibs//g"`
     - export LDFLAGS_LD=`echo "${LDFLAGS_LD}" | sed "s/-dead_strip_dylibs//g"`
-    - echo ${LDFLAGS}
-    - echo ${LDFLAGS_LD}
     - {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - libffi                                 # [build_platform != target_platform]
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
-    - libffi
     - python
     - pip
   run:
