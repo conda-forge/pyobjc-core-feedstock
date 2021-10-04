@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # force pyobjc to use conda-forge's chosen SDK
 export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
 
@@ -8,4 +7,4 @@ export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
 export LDFLAGS=`echo "${LDFLAGS}" | sed "s/-Wl,-dead_strip_dylibs//g"`
 export LDFLAGS_LD=`echo "${LDFLAGS_LD}" | sed "s/-dead_strip_dylibs//g"`
 
-{{ PYTHON }} -m pip install . --no-deps -vv
+pip install . --no-deps -vv
