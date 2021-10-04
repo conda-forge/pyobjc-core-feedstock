@@ -1,8 +1,8 @@
 diff --git a/pyobjc-core/setup.py b/pyobjc-core/setup.py
-index 6183ba97e..16f89f87f 100644
+index 6183ba97e..ab8b231c6 100644
 --- a/pyobjc-core/setup.py
 +++ b/pyobjc-core/setup.py
-@@ -130,6 +130,28 @@ if "-O0" in get_config_var("CFLAGS"):
+@@ -130,6 +130,31 @@ if "-O0" in get_config_var("CFLAGS"):
              config_vars[k] = config_vars[k].replace("-O0", "-O1")
  
  
@@ -24,8 +24,11 @@ index 6183ba97e..16f89f87f 100644
 +            print("  ...fixed:", k, ' '.join(new_flags))
 +
 +
-+# overwrite LDFLAGS
-+get_config_vars()["LDSHARED"] = os.environ['CC'] + ' -shared ' + os.environ['CFLAGS'] + ' ' + os.environ['LDFLAGS'] + ' ' + os.environ['CPPFLAGS']
++# overwrite the linker flags using CC and LDFLAGS set in the build script
++_ldshared = get_config_var("LDSHARED").split()
++_ldshared[0] = os.environ['CC']
++_ldshared = ' '.join(_ldshared)
++get_config_vars()["LDSHARED"] = _ldshared + ' ' + os.environ['LDFLAGS'] + ' ' + os.environ['CPPFLAGS']
 +
 +
  if get_config_var("Py_DEBUG"):
