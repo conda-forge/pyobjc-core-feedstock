@@ -10,22 +10,26 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - fix_for_conda_build.diff
 
 build:
-  number: 1
+  number: 2
   skip: true  # [not osx or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - python
     - pip
+    # - libffi  # TODO: switch to CF's libffi
   run:
     - python
     - setuptools
+    # - libffi  # TODO: switch to CF's libffi
 
 test:
   imports:
