@@ -24,9 +24,11 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - libffi                                 # [build_platform != target_platform]
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
+    - libffi
     - python
     - pip
   run:
