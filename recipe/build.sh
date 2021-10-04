@@ -7,4 +7,9 @@ export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
 export LDFLAGS=`echo "${LDFLAGS}" | sed "s/-Wl,-dead_strip_dylibs//g"`
 export LDFLAGS_LD=`echo "${LDFLAGS_LD}" | sed "s/-dead_strip_dylibs//g"`
 
-pip install . --no-deps -vv
+if [[ $CONDA_BUILD_CROSS_COMPILATION == "1"  && $target_platform == osx-arm64 ]]; then
+    PIP="$PREFIX/bin/python -m pip"
+else
+    PIP="pip"
+fi
+$PIP install . --no-deps -vv
