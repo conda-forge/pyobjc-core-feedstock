@@ -1,41 +1,41 @@
 diff --git a/pyobjc-core/setup.py b/pyobjc-core/setup.py
-index 6183ba97e..e20a6db05 100644
+index 6183ba97e..487612377 100644
 --- a/pyobjc-core/setup.py
 +++ b/pyobjc-core/setup.py
-@@ -81,9 +81,9 @@ CFLAGS = [
-     # "-fsanitize=address", "-fsanitize=undefined", "-fno-sanitize=vptr",
-     # "--analyze",
-     "-Werror",
--    "-I/usr/include/ffi",
-     # "-fvisibility=hidden",
-     # "-O3", "-flto",
-+    "-I"+os.path.expandvars('$PREFIX')+"/include",
- ]
- 
- # CFLAGS for other (test) extensions:
-@@ -98,6 +98,7 @@ OBJC_LDFLAGS = [
-     "-framework",
-     "Carbon",
-     # "-fvisibility=protected",
-+    "-L"+os.path.expandvars('$PREFIX')+"/lib",
-     "-g",
-     "-lffi",
-     # "-fsanitize=address", "-fsanitize=undefined", "-fno-sanitize=vptr",
-@@ -387,6 +388,8 @@ def _find_executable(executable):
+@@ -130,6 +130,24 @@ if "-O0" in get_config_var("CFLAGS"):
+             config_vars[k] = config_vars[k].replace("-O0", "-O1")
  
  
- def _working_compiler(executable):
-+    print(f"executable: {executable}")
++if "-Wl" in get_config_var("CFLAGS"):
++    # some Python versions have "-Wl,-export_dynamic" present, causing
++    # Clang to complain
++    print("PATCH: remove linker flags...")
++    config_vars = get_config_vars()
++    for k in ('CFLAGS', 'CXXFLAGS'):
++        if isinstance(config_vars[k], str) and "-Wl" in config_vars[k]:
++            flags = config_vars[k].split()
++            new_flags = []
++            for f in flags:
++                if f.startswith("-Wl"):
++                    continue
++                else:
++                    new_flags.append(f)
++            config_vars[k] = ' '.join(new_flags)
++            print("  ...fixed:", k, ' '.join(new_flags))
 +
-     if executable == "xcrun":
-         return True
++
+ if get_config_var("Py_DEBUG"):
+     # Running with Py_DEBUG, reduce optimization level
+     # to make it easier to debug the code.
+@@ -550,6 +568,11 @@ class oc_build_ext(build_ext.build_ext):
+             cflags = cflags.replace("-mno-fused-madd", "")
+             get_config_vars()["CFLAGS"] = cflags
  
-@@ -406,6 +409,8 @@ def _working_compiler(executable):
-         stdout, stderr = p.communicate()
-         status = p.wait()
-         if status != 0:
-+            print(f"stdout:\n{stdout}")
-+            print(f"stderr:\n{stderr}")
-             return False
- 
-         binfile = fp.name[:-1] + "o"
++        ldflags = get_config_var("LDFLAGS")
++        if "-Wl,-dead_strip_dylibs" in ldflags:
++            ldflags = ldflags.replace("-Wl,-dead_strip_dylibs", "")
++            get_config_vars()["LDFLAGS"] = ldflags
++
+         CFLAGS.append(
+             "-DPyObjC_BUILD_RELEASE=%02d%02d"
+             % (tuple(map(int, get_sdk_level(self.sdk_root).split("."))))

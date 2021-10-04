@@ -5,10 +5,6 @@ set -e
 # force pyobjc to use conda-forge's chosen SDK
 export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
 
-# some Python versions have "-Wl,-export_dynamic" present, causing
-# Clang to complain...
-export CFLAGS=`echo "${CFLAGS}" | sed "s/-Wl,-export_dynamic//g"`
-
 # "-framework Carbon" is ignored because of this linker flag set by conda, so we remove it
 export LDFLAGS=`echo "${LDFLAGS}" | sed "s/-Wl,-dead_strip_dylibs//g"`
 export LDFLAGS_LD=`echo "${LDFLAGS_LD}" | sed "s/-dead_strip_dylibs//g"`
