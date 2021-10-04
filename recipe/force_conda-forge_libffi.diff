@@ -1,5 +1,5 @@
 diff --git a/pyobjc-core/setup.py b/pyobjc-core/setup.py
-index 6183ba97e..487612377 100644
+index 6183ba97e..89e656fca 100644
 --- a/pyobjc-core/setup.py
 +++ b/pyobjc-core/setup.py
 @@ -130,6 +130,24 @@ if "-O0" in get_config_var("CFLAGS"):
@@ -11,7 +11,7 @@ index 6183ba97e..487612377 100644
 +    # Clang to complain
 +    print("PATCH: remove linker flags...")
 +    config_vars = get_config_vars()
-+    for k in ('CFLAGS', 'CXXFLAGS'):
++    for k in ('CFLAGS', 'CPPFLAGS'):
 +        if isinstance(config_vars[k], str) and "-Wl" in config_vars[k]:
 +            flags = config_vars[k].split()
 +            new_flags = []
