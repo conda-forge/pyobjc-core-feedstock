@@ -12,4 +12,4 @@ if [[ $CONDA_BUILD_CROSS_COMPILATION == "1"  && $target_platform == osx-arm64 ]]
 else
     PIP="pip"
 fi
-$PIP install . --no-deps -vv
+CFLAGS=$CFLAGS LDFLAGS=$LDFLAGS LDFLAGS_LD=$LDFLAGS_LD $PIP install . --no-deps -vv
