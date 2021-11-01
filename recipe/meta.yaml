@@ -25,11 +25,11 @@ requirements:
   host:
     - python
     - pip
-    # - libffi  # TODO: switch to CF's libffi
+    - libffi
   run:
     - python
     - setuptools
-    # - libffi  # TODO: switch to CF's libffi
+    - libffi
 
 test:
   imports:
