@@ -14,7 +14,7 @@ source:
     - fix_for_conda_build.diff
 
 build:
-  number: 2
+  number: 3
   skip: true  # [not osx or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 
 requirements:
@@ -35,6 +35,8 @@ test:
   imports:
     - PyObjCTools
     - objc
+  commands:
+    - DYLD_PRINT_LIBRARIES=1 {{ python }} -c "import objc"
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
