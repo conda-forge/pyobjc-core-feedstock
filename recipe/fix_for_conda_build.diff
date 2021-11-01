@@ -1,8 +1,16 @@
 diff --git a/pyobjc-core/setup.py b/pyobjc-core/setup.py
-index 6183ba97e..b76166458 100644
+index 6183ba97e..db4b0da7d 100644
 --- a/pyobjc-core/setup.py
 +++ b/pyobjc-core/setup.py
-@@ -130,6 +130,32 @@ if "-O0" in get_config_var("CFLAGS"):
+@@ -81,7 +81,6 @@ CFLAGS = [
+     # "-fsanitize=address", "-fsanitize=undefined", "-fno-sanitize=vptr",
+     # "--analyze",
+     "-Werror",
+-    "-I/usr/include/ffi",
+     # "-fvisibility=hidden",
+     # "-O3", "-flto",
+ ]
+@@ -130,6 +129,32 @@ if "-O0" in get_config_var("CFLAGS"):
              config_vars[k] = config_vars[k].replace("-O0", "-O1")
  
  
