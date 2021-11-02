@@ -14,7 +14,7 @@ source:
     - fix_for_conda_build.diff
 
 build:
-  number: 2
+  number: 3
   skip: true  # [not osx or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 
 requirements:
@@ -25,11 +25,11 @@ requirements:
   host:
     - python
     - pip
-    # - libffi  # TODO: switch to CF's libffi
+    - libffi
   run:
     - python
     - setuptools
-    # - libffi  # TODO: switch to CF's libffi
+    - libffi
 
 test:
   imports:

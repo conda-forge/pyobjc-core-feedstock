@@ -8,9 +8,13 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+libffi:
+- '3.4'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pin_run_as_build:
+  libffi:
+    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x
