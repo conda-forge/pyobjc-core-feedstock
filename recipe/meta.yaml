@@ -35,8 +35,6 @@ test:
   imports:
     - PyObjCTools
     - objc
-  commands:
-    - DYLD_PRINT_LIBRARIES=1 python -c "import objc"
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
