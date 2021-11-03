@@ -14,7 +14,7 @@ source:
     - fix_for_conda_build.diff
 
 build:
-  number: 4
+  number: 5
   skip: true  # [not osx or py2k or python_impl == 'pypy' or (arm64 and py < 39)]
 
 requirements:
