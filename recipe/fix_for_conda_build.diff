@@ -1,45 +1,12 @@
 diff --git a/pyobjc-core/setup.py b/pyobjc-core/setup.py
-index 6183ba97e..db4b0da7d 100644
+index 0ed4c1bc3..21e1ee131 100644
 --- a/pyobjc-core/setup.py
 +++ b/pyobjc-core/setup.py
-@@ -81,7 +81,6 @@ CFLAGS = [
+@@ -87,7 +87,6 @@ CFLAGS = [
      # "-fsanitize=address", "-fsanitize=undefined", "-fno-sanitize=vptr",
      # "--analyze",
      "-Werror",
 -    "-I/usr/include/ffi",
-     # "-fvisibility=hidden",
-     # "-O3", "-flto",
- ]
-@@ -130,6 +129,32 @@ if "-O0" in get_config_var("CFLAGS"):
-             config_vars[k] = config_vars[k].replace("-O0", "-O1")
- 
- 
-+if "-Wl" in get_config_var("CFLAGS"):
-+    # some Python versions have "-Wl,-export_dynamic" present, causing
-+    # Clang to complain
-+    print("PATCH: remove linker flags...")
-+    config_vars = get_config_vars()
-+    for k in ('CFLAGS', 'CPPFLAGS'):
-+        if isinstance(config_vars[k], str) and "-Wl" in config_vars[k]:
-+            flags = config_vars[k].split()
-+            new_flags = []
-+            for f in flags:
-+                if f.startswith("-Wl"):
-+                    continue
-+                else:
-+                    new_flags.append(f)
-+            config_vars[k] = ' '.join(new_flags)
-+            print("  ...fixed:", k, ' '.join(new_flags))
-+
-+
-+# overwrite the linker flags using CC and LDFLAGS set in the build script
-+_ldshared = get_config_var("LDSHARED").split()
-+_ldshared[0] = os.environ['CC']
-+_ldshared = ' '.join(_ldshared) + ' ' + os.environ['LDFLAGS'] + ' ' + os.environ['CPPFLAGS']
-+_ldshared = _ldshared.replace("-Wl,-dead_strip_dylibs", "")
-+get_config_vars()["LDSHARED"] = _ldshared
-+
-+
- if get_config_var("Py_DEBUG"):
-     # Running with Py_DEBUG, reduce optimization level
-     # to make it easier to debug the code.
+     "-fvisibility=hidden",
+     # -O0", "-g"
+     "-O3",
