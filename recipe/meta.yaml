@@ -14,7 +14,7 @@ source:
     - fix_for_conda_build.diff
 
 build:
-  number: 0
+  number: 1
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
@@ -31,10 +31,10 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
     - libffi
   run:
     - python
-    - setuptools
     - libffi
 
 test:
