@@ -42,6 +42,7 @@ test:
   imports:
     - PyObjCTools
     - objc
+    - CoreFoundation
 
 about:
   home: https://github.com/ronaldoussoren/pyobjc
