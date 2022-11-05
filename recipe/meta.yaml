@@ -1,6 +1,6 @@
 {% set name = "pyobjc-core" %}
-{% set version = "8.5.1" %}
-{% set sha256 = "f8592a12de076c27006700c4a46164478564fa33d7da41e7cbdd0a3bf9ddbccf" %}
+{% set version = "9.0" %}
+{% set sha256 = "3e7010c648eb94b16dd37a55f7719ed3bef6559edf4cf8fd741f46869dc223b1" %}
 
 package:
   name: {{ name }}
@@ -14,7 +14,7 @@ source:
     - fix_for_conda_build.diff
 
 build:
-  number: 1
+  number: 0
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
