@@ -32,6 +32,7 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
     - libffi
   run:
     - python
