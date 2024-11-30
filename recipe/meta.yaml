@@ -1,6 +1,6 @@
 {% set name = "pyobjc-core" %}
-{% set version = "10.3.1" %}
-{% set sha256 = "b204a80ccc070f9ab3f8af423a3a25a6fd787e228508d00c4c30f8ac538ba720" %}
+{% set version = "10.3.2" %}
+{% set sha256 = "dbf1475d864ce594288ce03e94e3a98dc7f0e4639971eb1e312bdf6661c21e0e" %}
 
 package:
   name: {{ name }}
@@ -8,13 +8,13 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - fix_for_conda_build.diff
 
 build:
-  number: 1
+  number: 0
   script:
     # force pyobjc to use conda-forge's chosen SDK
     - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
