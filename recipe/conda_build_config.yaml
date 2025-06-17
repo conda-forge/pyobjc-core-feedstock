@@ -1,3 +1,7 @@
+c_compiler:    # [osx]
+  - clang      # [osx]
+cxx_compiler:  # [osx]
+  - clangxx    # [osx]
 MACOSX_SDK_VERSION:        # [osx]
   - "11.3"                 # [osx and arm64]
   - "10.15"                # [osx and x86_64]
