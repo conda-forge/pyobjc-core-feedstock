@@ -1,6 +1,6 @@
 {% set name = "pyobjc-core" %}
-{% set version = "11.0" %}
-{% set sha256 = "63bced211cb8a8fb5c8ff46473603da30e51112861bd02c438fbbbc8578d9a70" %}
+{% set version = "11.1" %}
+{% set sha256 = "b63d4d90c5df7e762f34739b39cc55bc63dbcf9fb2fb3f2671e528488c7a87fe" %}
 
 package:
   name: {{ name }}
@@ -55,3 +55,4 @@ about:
 extra:
   recipe-maintainers:
     - kastman
+    - larsoner

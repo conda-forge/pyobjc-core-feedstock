@@ -2,10 +2,10 @@ diff --git a/pyobjc-core/setup.py b/pyobjc-core/setup.py
 index e5d016531..5119bebf2 100644
 --- a/pyobjc-core/setup.py
 +++ b/pyobjc-core/setup.py
-@@ -87,7 +87,7 @@ CFLAGS = [
-     # "-fsanitize=address", "-fsanitize=undefined", "-fno-sanitize=vptr",
+@@ -92,7 +92,7 @@
      # "--analyze",
-     "-Werror",
+     # "-Werror",
+     "-Wno-cast-function-type-mismatch",
 -    "-I/usr/include/ffi",
 +    "-Wno-unreachable-code",
      "-fvisibility=hidden",
