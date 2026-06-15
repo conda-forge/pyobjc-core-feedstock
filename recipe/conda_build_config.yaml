@@ -6,6 +6,6 @@ c_compiler_version:
   - "19.1"   # [osx]
 cxx_compiler_version:
   - "19.1"   # [osx]
-MACOSX_SDK_VERSION:        # [osx]
+c_stdlib_version:          # [osx]
   - "11.3"                 # [osx and arm64]
   - "10.15"                # [osx and x86_64]
