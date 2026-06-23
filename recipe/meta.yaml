@@ -1,10 +1,10 @@
 {% set name = "pyobjc-core" %}
-{% set version = "12.1" %}
-{% set sha256 = "2bb3903f5387f72422145e1466b3ac3f7f0ef2e9960afa9bcd8961c5cbf8bd21" %}
+{% set version = "12.2" %}
+{% set sha256 = "51d7de4cfa32f508c6a7aac31f131b12d5e196a8dcf588e6e8d7e6337224f66d" %}
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
