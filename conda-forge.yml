@@ -7,6 +7,6 @@ github:
   branch_name: main
   tooling_branch_name: main
 provider:
-  osx_64: github_actions
-  osx_arm64: github_actions
+  osx_64: default
+  osx_arm64: default
 test: native_and_emulated
