@@ -1,0 +1,60 @@
+schema_version: 1
+
+context:
+  name: pyobjc-core
+  version: "13.0"
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: ffe154462d14aa4852f424e9116f17b5f8d44f78fc0f6c4727e721a5fa7177da
+  patches:
+    - fix_for_conda_build.diff
+
+build:
+  number: 0
+  skip:
+    - not osx
+  script:
+    # force pyobjc to use conda-forge's chosen SDK
+    - export CFLAGS="${CFLAGS} -isysroot ${SDKROOT:-$CONDA_BUILD_SYSROOT}"
+    - ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+  host:
+    - python
+    - pip
+    - setuptools
+    - libffi
+  run:
+    - python
+    - setuptools
+    - libffi
+
+tests:
+  - python:
+      imports:
+        - PyObjCTools
+        - objc
+
+about:
+  homepage: https://github.com/ronaldoussoren/pyobjc
+  license: MIT
+  license_file: License.txt
+  summary: Python<->ObjC Interoperability Module
+  documentation: https://pyobjc.readthedocs.io/en/latest/
+
+extra:
+  recipe-maintainers:
+    - kastman
+    - larsoner
