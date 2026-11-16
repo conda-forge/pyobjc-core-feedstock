@@ -15,7 +15,7 @@ source:
     - fix_for_conda_build.diff
 
 build:
-  number: 0
+  number: 1
   skip:
     - not osx
   script:
