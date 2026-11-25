@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pyobjc-core
-  version: "13.0"
+  version: "13.1"
 
 package:
   name: ${{ name }}
@@ -10,12 +10,12 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
-  sha256: ffe154462d14aa4852f424e9116f17b5f8d44f78fc0f6c4727e721a5fa7177da
+  sha256: fd73c9020389c325d2045992134a8d89f8f554b46084c8ff36fe05a54bc9996e
   patches:
     - fix_for_conda_build.diff
 
 build:
-  number: 1
+  number: 0
   skip:
     - not osx
   script:
